@@ -19,6 +19,11 @@ import { LoggerModule } from './common/logger';
 import { SentryModule } from './common/sentry';
 import { CacheModule } from './cache/cache.module';
 import { AuthModule } from './auth/auth.module';
+ api
+import { AnalyticsModule } from './analytics/analytics.module';
+import { WebsocketModule } from './websocket/websocket.module';
+import { ApiMonetizationModule } from './api-monetization/api-monetization.module';
+=======
 import { UsersModule } from './users/users.module';
 import { SignalsModule } from './signals/signals.module';
 import { TradesModule } from './trades/trades.module';
@@ -38,6 +43,7 @@ import { KycModule } from './kyc/kyc.module';
 import { ProductAnalyticsModule } from './analytics/product-analytics.module';
 import { BackupModule } from './backup/backup.module';
 import { AdminAnalyticsModule } from './admin/analytics/admin-analytics.module';
+main
 
 @Module({
   imports: [
@@ -118,6 +124,10 @@ import { AdminAnalyticsModule } from './admin/analytics/admin-analytics.module';
     TradesModule,
     CacheModule,
     AuthModule,
+ api
+    WebsocketModule,
+    ApiMonetizationModule,
+=======
     ProvidersModule,
     MlModule,
     ScalingModule,
@@ -132,6 +142,7 @@ import { AdminAnalyticsModule } from './admin/analytics/admin-analytics.module';
     ProductAnalyticsModule,
     BackupModule,
     AdminAnalyticsModule,
+ main
   ],
   providers: [StellarConfigService],
   exports: [StellarConfigService],
