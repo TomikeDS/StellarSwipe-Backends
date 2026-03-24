@@ -1,0 +1,22 @@
+{
+    "INVALID_PRICE": "Ọnụahịa na-abaghị uru",
+    "INSUFFICIENT_BALANCE": "Ego ezughị oke maka azụmahịa a",
+    "SIGNAL_NOT_FOUND": "Ahụghị mgbaama",
+    "TRADE_FAILED": "Azụmahịa agaghị nke ọma",
+    "USER_NOT_FOUND": "Ahụghị onye ọrụ",
+    "USER_ALREADY_EXISTS": "Onye ọrụ nwere adreesị obere akpa a adịlarị",
+    "PREFERENCE_NOT_FOUND": "Ahụghị mmasị onye ọrụ",
+    "UNAUTHORIZED": "Nweta na-enweghị ikike",
+    "INVALID_WALLET": "Adreesị obere akpa na-abaghị uru",
+    "SESSION_EXPIRED": "Oge agwụla",
+    "CHALLENGE_EXPIRED": "Ihe ịma aka nyocha agwụla",
+    "INVALID_SIGNATURE": "Mbinye aka na-abaghị uru",
+    "ASSET_NOT_FOUND": "Ahụghị akụ",
+    "PORTFOLIO_NOT_FOUND": "Ahụghị pọtụfoliyo",
+    "RISK_LIMIT_EXCEEDED": "Oke ihe ize ndụ gafere",
+    "SLIPPAGE_TOO_HIGH": "Mmanye gafere oke anabatara",
+    "INTERNAL_ERROR": "Enwere njehie nkesa n'ime",
+    "VALIDATION_FAILED": "Nkwenye agaghị nke ọma",
+    "RATE_LIMIT_EXCEEDED": "Ario otutu aririọ, biiko nwaa ọzọ ma emechaa",
+    "FORBIDDEN": "Iweghị ikike ime omume a"
+}

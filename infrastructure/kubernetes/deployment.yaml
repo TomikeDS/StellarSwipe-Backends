@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stellarswipe-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stellarswipe-api
+  template:
+    metadata:
+      labels:
+        app: stellarswipe-api
+    spec:
+      containers:
+      - name: api
+        image: stellarswipe-api:latest
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: stellarswipe-config
+        - secretRef:
+            name: stellarswipe-secrets
+        readinessProbe:
+          httpGet:
+            path: /health/readiness
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health/liveness
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stellarswipe-api
+spec:
+  selector:
+    app: stellarswipe-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer

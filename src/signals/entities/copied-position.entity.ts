@@ -29,11 +29,9 @@ export class CopiedPosition {
   id!: string;
 
   @Column({ name: 'signal_id', type: 'uuid' })
-  @Index()
   signalId!: string;
 
   @Column({ name: 'user_id', type: 'uuid' })
-  @Index()
   userId!: string;
 
   @Column({ name: 'copier_id', type: 'uuid', nullable: true })

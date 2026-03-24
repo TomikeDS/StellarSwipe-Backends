@@ -1,0 +1,22 @@
+{
+    "INVALID_PRICE": "Owo ti ko tọ",
+    "INSUFFICIENT_BALANCE": "Owo ko to fun iṣowo yii",
+    "SIGNAL_NOT_FOUND": "A ko ri ami",
+    "TRADE_FAILED": "Iṣowo ko ṣaṣeyọri",
+    "USER_NOT_FOUND": "A ko ri olumulo",
+    "USER_ALREADY_EXISTS": "Olumulo pelu adirẹsi wọleti yii ti wa",
+    "PREFERENCE_NOT_FOUND": "A ko ri ifẹ olumulo",
+    "UNAUTHORIZED": "Wiwọle laisi aṣẹ",
+    "INVALID_WALLET": "Adirẹsi awọleti ti ko tọ",
+    "SESSION_EXPIRED": "Apejọ ti pari",
+    "CHALLENGE_EXPIRED": "Idanwo ijẹrisi ti pari",
+    "INVALID_SIGNATURE": "Ibuwọlu ti ko tọ",
+    "ASSET_NOT_FOUND": "A ko ri dukia",
+    "PORTFOLIO_NOT_FOUND": "A ko ri apamọwọ",
+    "RISK_LIMIT_EXCEEDED": "Ewu ti kọja opin",
+    "SLIPPAGE_TOO_HIGH": "Iyọkuro ti kọja iye ti a gba laaye",
+    "INTERNAL_ERROR": "Aṣiṣe olupin inu kan waye",
+    "VALIDATION_FAILED": "Ifọwọsi kuna",
+    "RATE_LIMIT_EXCEEDED": "Awọn ibeere pọju, jọwọ gbiyanju lẹẹkansi nigbamii",
+    "FORBIDDEN": "O ko ni igbanilaaye lati ṣe iṣe yii"
+}

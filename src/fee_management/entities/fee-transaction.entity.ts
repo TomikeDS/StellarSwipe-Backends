@@ -22,15 +22,11 @@ export enum FeeTier {
 }
 
 @Entity('fee_transactions')
-@Index(['userId', 'createdAt'])
-@Index(['status', 'createdAt'])
-@Index(['feeTier'])
 export class FeeTransaction {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column()
-  @Index()
   userId!: string;
 
   @Column({ type: 'decimal', precision: 20, scale: 7 })
@@ -54,7 +50,6 @@ export class FeeTransaction {
     enum: FeeStatus,
     default: FeeStatus.PENDING,
   })
-  @Index()
   status!: FeeStatus;
 
   @Column({ nullable: true })

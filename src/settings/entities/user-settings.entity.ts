@@ -46,7 +46,6 @@ export class UserSettings {
   id: string;
 
   @Column('uuid', { unique: true })
-  @Index()
   userId: string;
 
   @Column('jsonb')

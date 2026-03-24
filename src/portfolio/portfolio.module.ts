@@ -1,7 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BullModule } from '@nestjs/bull';
+import { CacheModule } from '@nestjs/cache-manager';
+
 import { PortfolioService } from './portfolio.service';
 import { PortfolioController } from './portfolio.controller';
+import { AllocationAnalyzerService } from './services/allocation-analyzer.service';
+import { RebalancingService } from './services/rebalancing.service';
+import { CheckRebalancingJob, REBALANCING_QUEUE } from './jobs/check-rebalancing.job';
+
 import { Trade } from '../trades/entities/trade.entity';
 import { Position } from './entities/position.entity';
 import { PnlHistory } from './entities/pnl-history.entity';

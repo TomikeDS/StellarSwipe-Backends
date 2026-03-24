@@ -22,11 +22,9 @@ export class BetaUser {
   id!: string;
 
   @Column({ unique: true, length: 255 })
-  @Index()
   email!: string;
 
   @Column({ name: 'stellar_address', type: 'varchar', length: 56, nullable: true })
-  @Index()
   stellarAddress?: string;
 
   @Column({

@@ -16,7 +16,6 @@ export class Session {
     id!: string;
 
     @Column()
-    @Index('idx_sessions_user_id')
     userId!: string;
 
     @ManyToOne(() => User, (user) => user.sessions, { onDelete: 'CASCADE' })
@@ -24,7 +23,6 @@ export class Session {
     user!: User;
 
     @Column({ unique: true })
-    @Index('idx_sessions_token')
     token!: string;
 
     @Column({ nullable: true })

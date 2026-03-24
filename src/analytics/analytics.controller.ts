@@ -6,12 +6,20 @@ import {
   Post,
   Query,
   BadRequestException,
+  Req,
 } from '@nestjs/common';
 import { IsEnum, IsISO8601, IsObject, IsOptional, IsString, IsUUID } from 'class-validator';
 import { AnalyticsService } from './analytics.service';
 import { AnalyticsQueryDto } from './dto/analytics-query.dto';
 import { MetricPeriod } from './entities/metric-snapshot.entity';
 import { UserEventType } from './entities/user-event.entity';
+import { RiskMetricsService } from './services/risk-metrics.service';
+import { RiskMetricsQueryDto } from './dto/risk-metrics.dto';
+import { AttributionService } from './services/attribution.service';
+import { AttributionQueryDto } from './dto/attribution-query.dto';
+import { CorrelationService } from './services/correlation.service';
+import { CorrelationQueryDto } from './dto/correlation-query.dto';
+import { CorrelationMatrixDto } from './dto/correlation-matrix.dto';
 
 class TrackEventDto {
   @IsEnum(UserEventType)
@@ -39,7 +47,12 @@ class TrackEventDto {
 
 @Controller('analytics')
 export class AnalyticsController {
-  constructor(private readonly analyticsService: AnalyticsService) {}
+  constructor(
+    private readonly analyticsService: AnalyticsService,
+    private readonly riskMetricsService: RiskMetricsService,
+    private readonly attributionService: AttributionService,
+    private readonly correlationService: CorrelationService,
+  ) {}
 
   @Post('events')
   async trackEvent(@Body() body: TrackEventDto) {
@@ -106,5 +119,46 @@ export class AnalyticsController {
       endDate,
       timezone,
     });
+  }
+
+  @Get('risk-metrics')
+  async getRiskMetrics(@Req() req: any, @Query() query: RiskMetricsQueryDto) {
+    const userId = req.user?.id;
+    if (!userId) {
+      throw new BadRequestException('User authentication required');
+    }
+
+    return this.riskMetricsService.calculateRiskMetrics(userId, query.days);
+  }
+
+  @Get('attribution')
+  async getAttribution(@Req() req: any, @Query() query: AttributionQueryDto) {
+    const userId = req.user?.id;
+    if (!userId) {
+      throw new BadRequestException('User authentication required');
+    }
+
+    const startDate = new Date(query.startDate);
+    const endDate = new Date(query.endDate);
+
+    if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime())) {
+      throw new BadRequestException('startDate and endDate must be valid ISO dates');
+    }
+
+    if (startDate >= endDate) {
+      throw new BadRequestException('startDate must be before endDate');
+    }
+
+    return this.attributionService.calculateAttribution(
+      userId,
+      startDate,
+      endDate,
+      query.timeframe,
+    );
+  }
+
+  @Get('correlations')
+  async getCorrelations(@Query() query: CorrelationQueryDto): Promise<CorrelationMatrixDto> {
+    return this.correlationService.getCorrelations(query);
   }
 }

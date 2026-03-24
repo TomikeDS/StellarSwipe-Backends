@@ -1,0 +1,19 @@
+{
+    "TRADE_EXECUTED": "Cinikin ku ya yi nasara",
+    "TRADE_PENDING": "Ana sarrafa cinikin ku",
+    "TRADE_CANCELLED": "An soke cinikin ku",
+    "SIGNAL_CREATED": "An kirkiro sabon sigina",
+    "SIGNAL_UPDATED": "An sabunta sigina",
+    "SIGNAL_CLOSED": "An rufe sigina",
+    "PORTFOLIO_UPDATED": "An sabunta fayil ɗinku",
+    "RISK_ALERT": "Gargadin haɗari: Matsayinku ya wuce ƙimar haɗarin ku",
+    "PRICE_ALERT": "Gargadin farashi ya tayar don {asset}",
+    "WELCOME": "Barka da zuwa StellarSwipe!",
+    "SESSION_STARTED": "Kun shiga cikin nasara",
+    "SESSION_ENDED": "Kun fita",
+    "PREFERENCE_UPDATED": "An sabunta zaɓinku",
+    "PAYMENT_SCHEDULED": "An tsara biyan kuɗinku a {date}",
+    "PAYMENT_EXECUTED": "Biyan kuɗin da kuka tsara ya yi nasara",
+    "PAYMENT_CANCELLED": "An soke biyan kuɗin da kuka tsara",
+    "PAYMENT_REMINDER": "Tunasarwa: Kuna da tsarin biya a {date}"
+}

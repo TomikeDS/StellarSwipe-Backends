@@ -1,0 +1,17 @@
+{
+    "SUCCESS": "Iṣẹ ti pari ni aṣeyọri",
+    "CREATED": "Ohun elo ti ṣẹda ni aṣeyọri",
+    "UPDATED": "Ohun elo ti dojuiwọn ni aṣeyọri",
+    "DELETED": "Ohun elo ti paarẹ ni aṣeyọri",
+    "NOT_FOUND": "A ko ri ohun elo ti a beere",
+    "LOADING": "N gberu...",
+    "PLEASE_WAIT": "Jọwọ duro nigbati a n ṣiṣẹ ibeere rẹ",
+    "CONFIRM": "Njẹ o da ọ loju pe o fẹ tẹsiwaju?",
+    "CANCEL": "Iṣẹ ti fagile",
+    "YES": "Bẹẹni",
+    "NO": "Rara",
+    "CURRENCY_FORMAT": "{amount} {currency}",
+    "DATE_FORMAT": "YYYY-MM-DD",
+    "LANGUAGE_CHANGED": "Ede ti yipada si Gẹẹsi",
+    "UNSUPPORTED_LANGUAGE": "Ede ti ko ṣe atilẹyin, da pada si Gẹẹsi"
+}

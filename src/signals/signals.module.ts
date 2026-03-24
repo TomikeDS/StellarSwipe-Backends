@@ -3,12 +3,24 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bull';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Signal } from './entities/signal.entity';
+import { CopiedPosition } from './entities/copied-position.entity';
 import { SignalsService } from './signals.service';
 import { SignalsController } from './signals.controller';
+import {
+  SignalVersion,
+  SignalVersionApproval,
+} from './versions/entities/signal-version.entity';
+import { SignalVersionService } from './versions/signal-version.service';
+import { SignalVersionController } from './versions/signal-version.controller';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Signal]),
+    TypeOrmModule.forFeature([
+      Signal,
+      CopiedPosition,
+      SignalVersion,
+      SignalVersionApproval,
+    ]),
     BullModule.registerQueueAsync({
       name: 'signal-tracking',
       imports: [ConfigModule],
@@ -32,8 +44,8 @@ import { SignalsController } from './signals.controller';
       }),
     }),
   ],
-  providers: [SignalsService],
-  controllers: [SignalsController],
-  exports: [SignalsService, TypeOrmModule],
+  providers: [SignalsService, SignalVersionService],
+  controllers: [SignalsController, SignalVersionController],
+  exports: [SignalsService, SignalVersionService, TypeOrmModule],
 })
 export class SignalsModule {}

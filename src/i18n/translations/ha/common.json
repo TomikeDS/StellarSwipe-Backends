@@ -1,0 +1,17 @@
+{
+    "SUCCESS": "Aiki ya kammala cikin nasara",
+    "CREATED": "An ƙirƙiri abun nasara",
+    "UPDATED": "An sabunta abun nasara",
+    "DELETED": "An goge abun nasara",
+    "NOT_FOUND": "Ba a sami abun da aka buƙata ba",
+    "LOADING": "Ana lodawa...",
+    "PLEASE_WAIT": "Don Allah jira yayin da muke sarrafa buƙatarku",
+    "CONFIRM": "Shin kuna da tabbacin kuna son ci gaba?",
+    "CANCEL": "Aiki an soke",
+    "YES": "Eh",
+    "NO": "A'a",
+    "CURRENCY_FORMAT": "{amount} {currency}",
+    "DATE_FORMAT": "YYYY-MM-DD",
+    "LANGUAGE_CHANGED": "An canza yare zuwa Turanci",
+    "UNSUPPORTED_LANGUAGE": "Yaren da ba a goyan baya, ana komawa zuwa Turanci"
+}

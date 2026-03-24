@@ -1,0 +1,49 @@
+import {
+  Controller,
+  Post,
+  Get,
+  Delete,
+  Body,
+  Param,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
+import { ApiKeysService } from './api-keys.service';
+import { CreateApiKeyDto } from './dto/create-api-key.dto';
+import { ApiKeyResponseDto, ApiKeyUsageDto } from './dto/api-key-usage.dto';
+
+@Controller('api-keys')
+export class ApiKeysController {
+  constructor(private readonly apiKeysService: ApiKeysService) {}
+
+  @Post()
+  async create(
+    @Request() req: any,
+    @Body() dto: CreateApiKeyDto,
+  ): Promise<ApiKeyResponseDto> {
+    return this.apiKeysService.create(req.userId, dto);
+  }
+
+  @Get()
+  async list(@Request() req: any) {
+    return this.apiKeysService.list(req.userId);
+  }
+
+  @Get('usage')
+  async getUsage(@Request() req: any): Promise<ApiKeyUsageDto[]> {
+    return this.apiKeysService.getUsage(req.userId);
+  }
+
+  @Post(':id/rotate')
+  async rotate(
+    @Request() req: any,
+    @Param('id') id: string,
+  ): Promise<ApiKeyResponseDto> {
+    return this.apiKeysService.rotate(req.userId, id);
+  }
+
+  @Delete(':id')
+  async revoke(@Request() req: any, @Param('id') id: string): Promise<void> {
+    return this.apiKeysService.revoke(req.userId, id);
+  }
+}

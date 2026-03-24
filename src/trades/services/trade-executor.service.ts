@@ -167,15 +167,16 @@ export class TradeExecutorService {
     return executedPrice.toFixed(8);
   }
 
-  async closeTrade(trade: Trade, exitPrice: string): Promise<ExecutionResult> {
-    this.logger.log(`Closing trade ${trade.id}`);
+  async closeTrade(trade: Trade, exitPrice: string, amount?: string): Promise<ExecutionResult> {
+    this.logger.log(`Closing trade ${trade.id}${amount ? ` (Partial: ${amount})` : ''}`);
 
     try {
       // Submit closing transaction to Soroban
       await this.simulateNetworkDelay();
 
       const transactionHash = this.generateTransactionHash();
-      const tradeValue = parseFloat(trade.amount) * parseFloat(exitPrice);
+      const amountToClose = amount || trade.amount;
+      const tradeValue = parseFloat(amountToClose) * parseFloat(exitPrice);
       const feePercentage = this.configService.get<number>('trade.baseFeePercentage', 0.1);
       const feeAmount = (tradeValue * feePercentage / 100).toFixed(8);
 
@@ -183,7 +184,7 @@ export class TradeExecutorService {
         success: true,
         transactionHash,
         executedPrice: exitPrice,
-        executedAmount: trade.amount,
+        executedAmount: amountToClose,
         feeAmount,
       };
     } catch (error) {

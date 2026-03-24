@@ -13,7 +13,6 @@ export enum MetricPeriod {
 }
 
 @Entity('metric_snapshots')
-@Index(['period', 'periodStart', 'timezone'], { unique: true })
 export class MetricSnapshot {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

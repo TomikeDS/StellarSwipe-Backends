@@ -1,0 +1,17 @@
+{
+    "SUCCESS": "Operation completed successfully",
+    "CREATED": "Resource created successfully",
+    "UPDATED": "Resource updated successfully",
+    "DELETED": "Resource deleted successfully",
+    "NOT_FOUND": "Requested resource not found",
+    "LOADING": "Loading...",
+    "PLEASE_WAIT": "Please wait while we process your request",
+    "CONFIRM": "Are you sure you want to proceed?",
+    "CANCEL": "Operation cancelled",
+    "YES": "Yes",
+    "NO": "No",
+    "CURRENCY_FORMAT": "{amount} {currency}",
+    "DATE_FORMAT": "YYYY-MM-DD",
+    "LANGUAGE_CHANGED": "Language changed to English",
+    "UNSUPPORTED_LANGUAGE": "Unsupported language, defaulting to English"
+}

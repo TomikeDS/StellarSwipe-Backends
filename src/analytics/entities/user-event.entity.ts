@@ -14,10 +14,6 @@ export enum UserEventType {
 }
 
 @Entity('user_events')
-@Index(['occurredAt'])
-@Index(['userId', 'occurredAt'])
-@Index(['eventType', 'occurredAt'])
-@Index('idx_user_events_event_id', ['eventId'], { unique: true, where: '"event_id" IS NOT NULL' })
 export class UserEvent {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

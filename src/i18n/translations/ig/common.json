@@ -1,0 +1,17 @@
+{
+    "SUCCESS": "Ọrụ arụzigharị ofuma",
+    "CREATED": "Emebiela ihe nrụpụta ofuma",
+    "UPDATED": "Emelitere ihe nrụpụta ofuma",
+    "DELETED": "Ehichiela ihe nrụpụta ofuma",
+    "NOT_FOUND": "Ahụghị arịziọ ahụ",
+    "LOADING": "Na-ebu...",
+    "PLEASE_WAIT": "Chere biko hachaa rịpụta gị",
+    "CONFIRM": "Ikwenyere ị chọrọ ịga n'ihu?",
+    "CANCEL": "Akwusịrịla ọrụ a",
+    "YES": "Ee",
+    "NO": "Mba",
+    "CURRENCY_FORMAT": "{amount} {currency}",
+    "DATE_FORMAT": "YYYY-MM-DD",
+    "LANGUAGE_CHANGED": "Gbanwe asụsụ ka Ọdịnọọ Be Kee (Bekee)",
+    "UNSUPPORTED_LANGUAGE": "Asụsụ adịghị ọkwa nke nkwado a, a ga-eji Bekee mee ihe"
+}

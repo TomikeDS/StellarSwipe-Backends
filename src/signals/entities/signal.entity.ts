@@ -35,15 +35,11 @@ export enum SignalOutcome {
 }
 
 @Entity('signals')
-@Index(['status', 'created_at'])
-@Index(['provider_id', 'created_at'])
-@Index(['base_asset', 'counter_asset'])
 export class Signal {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column({ name: 'provider_id', type: 'uuid' })
-  @Index()
   providerId!: string;
 
   @ManyToOne(() => User, (user) => user.signals)
@@ -51,11 +47,9 @@ export class Signal {
   provider!: User;
 
   @Column({ name: 'base_asset', length: 100 })
-  @Index()
   baseAsset!: string;
 
   @Column({ name: 'counter_asset', length: 100 })
-  @Index()
   counterAsset!: string;
 
   @Column({
@@ -69,7 +63,6 @@ export class Signal {
     enum: SignalStatus,
     default: SignalStatus.ACTIVE,
   })
-  @Index()
   status!: SignalStatus;
 
   @Column({
@@ -125,7 +118,6 @@ export class Signal {
   totalCopiedVolume!: string;
 
   @Column({ name: 'expires_at', type: 'timestamp with time zone' })
-  @Index()
   expiresAt!: Date;
 
   @Column({
@@ -167,13 +159,16 @@ export class Signal {
   metadata!: Record<string, any> | null;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamp with time zone' })
-  @Index()
   createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp with time zone' })
   updatedAt!: Date;
 
-  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp with time zone', nullable: true })
+  @DeleteDateColumn({
+    name: 'deleted_at',
+    type: 'timestamp with time zone',
+    nullable: true,
+  })
   deletedAt!: Date | null;
 
   @OneToMany(() => CopiedPosition, (p) => p.signalId)

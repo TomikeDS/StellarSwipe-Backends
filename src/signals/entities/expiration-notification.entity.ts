@@ -34,7 +34,6 @@ export class ExpirationNotification {
   id!: string;
 
   @Column({ name: 'user_id', type: 'uuid' })
-  @Index()
   userId!: string;
 
   @Column({ name: 'position_id', type: 'uuid', nullable: true })

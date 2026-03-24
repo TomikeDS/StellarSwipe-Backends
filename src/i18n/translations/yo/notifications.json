@@ -1,0 +1,19 @@
+{
+    "TRADE_EXECUTED": "Iṣowo rẹ ti ṣaṣeyọri",
+    "TRADE_PENDING": "Iṣowo rẹ n lọ lọwọ",
+    "TRADE_CANCELLED": "Iṣowo rẹ ti fagile",
+    "SIGNAL_CREATED": "A ti ṣẹda ami tuntun",
+    "SIGNAL_UPDATED": "A ti ṣe dojuiwọn ami",
+    "SIGNAL_CLOSED": "A ti ti ami",
+    "PORTFOLIO_UPDATED": "Apamọwọ rẹ ti dojuiwọn",
+    "RISK_ALERT": "Itaniji ewu: Ipo rẹ ti kọja oju ewu",
+    "PRICE_ALERT": "Itaniji iye ti bẹrẹ fun {asset}",
+    "WELCOME": "Kaabo si StellarSwipe!",
+    "SESSION_STARTED": "O ti wọle ni aṣeyọri",
+    "SESSION_ENDED": "O ti jade",
+    "PREFERENCE_UPDATED": "Awọn ifẹ rẹ ti dojuiwọn",
+    "PAYMENT_SCHEDULED": "Owo sisan rẹ ti ṣeto fun {date}",
+    "PAYMENT_EXECUTED": "Owo sisan rẹ ti a ṣeto ti ṣaṣeyọri",
+    "PAYMENT_CANCELLED": "Owo sisan rẹ ti a ṣeto ti fagile",
+    "PAYMENT_REMINDER": "Itolẹtisi: O ni owo sisan ti a ṣeto fun {date}"
+}

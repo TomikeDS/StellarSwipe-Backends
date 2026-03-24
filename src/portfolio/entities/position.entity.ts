@@ -14,11 +14,9 @@ export class Position {
   id!: string;
 
   @Column({ name: 'user_id', type: 'uuid' })
-  @Index()
   userId!: string;
 
   @Column({ name: 'trade_id', type: 'uuid' })
-  @Index()
   tradeId!: string;
 
   @Column({ name: 'base_asset', length: 100 })
@@ -46,7 +44,6 @@ export class Position {
   unrealizedPnL!: string;
 
   @Column({ name: 'is_active', type: 'boolean', default: true })
-  @Index()
   isActive!: boolean;
 
   @CreateDateColumn({ name: 'created_at' })

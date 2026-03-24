@@ -1,0 +1,21 @@
+{
+  "name": "tax-reporting-system",
+  "version": "1.0.0",
+  "description": "Crypto tax reporting system for multiple jurisdictions.",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "nest start",
+    "build": "nest build",
+    "start:dev": "nest start --watch"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0",
+    "class-validator": "^0.14.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.0.0",
+    "typescript": "^4.7.0"
+  }
+}

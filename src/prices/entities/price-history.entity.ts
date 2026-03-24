@@ -7,7 +7,6 @@ import {
 } from 'typeorm';
 
 @Entity('price_history')
-@Index(['assetPair', 'timestamp'])
 export class PriceHistory {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -31,7 +30,6 @@ export class PriceHistory {
   };
 
   @Column({ type: 'timestamp' })
-  @Index()
   timestamp: Date;
 
   @CreateDateColumn()

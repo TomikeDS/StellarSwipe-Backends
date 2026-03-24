@@ -11,8 +11,6 @@ import {
 import { Asset } from './asset.entity';
 
 @Entity('asset_pairs')
-@Index(['base_asset_id', 'counter_asset_id'], { unique: true })
-@Index(['is_tradable'])
 export class AssetPair {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

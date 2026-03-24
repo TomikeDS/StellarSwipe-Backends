@@ -20,7 +20,6 @@ export class Waitlist {
   id!: string;
 
   @Column({ unique: true, length: 255 })
-  @Index()
   email!: string;
 
   @Column({
@@ -31,11 +30,9 @@ export class Waitlist {
   status!: WaitlistStatus;
 
   @Column({ default: 0 })
-  @Index()
   position!: number;
 
   @Column({ name: 'referral_code', type: 'varchar', length: 16, nullable: true })
-  @Index()
   referralCode?: string;
 
   @Column({ name: 'referred_by_code', type: 'varchar', length: 16, nullable: true })

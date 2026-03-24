@@ -12,6 +12,8 @@ import {
 import { TradesService } from './trades.service';
 import { RiskManagerService } from './services/risk-manager.service';
 import { ExecuteTradeDto, CloseTradeDto } from './dto/execute-trade.dto';
+import { PartialCloseDto } from './partial-close/dto/partial-close.dto';
+import { PartialCloseService } from './partial-close/partial-close.service';
 import {
   TradeResultDto,
   TradeDetailsDto,
@@ -25,7 +27,8 @@ export class TradesController {
   constructor(
     private readonly tradesService: TradesService,
     private readonly riskManager: RiskManagerService,
-  ) {}
+    private readonly partialCloseService: PartialCloseService,
+  ) { }
 
   /**
    * Execute a new trade (swipe right action)
@@ -55,6 +58,16 @@ export class TradesController {
   @HttpCode(HttpStatus.OK)
   async closeTrade(@Body() dto: CloseTradeDto): Promise<CloseTradeResultDto> {
     return this.tradesService.closeTrade(dto);
+  }
+
+  /**
+   * Partially close an open position
+   * POST /trades/partial-close
+   */
+  @Post('partial-close')
+  @HttpCode(HttpStatus.OK)
+  async partialClose(@Body() dto: PartialCloseDto): Promise<any> {
+    return this.partialCloseService.closePartial(dto);
   }
 
   /**

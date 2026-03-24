@@ -8,18 +8,14 @@ export enum QualityBadge {
 }
 
 @Entity('signal_quality_scores')
-@Index(['signalId', 'calculatedAt'])
-@Index(['providerId', 'calculatedAt'])
 export class QualityScore {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column('uuid')
-  @Index()
   signalId!: string;
 
   @Column('uuid')
-  @Index()
   providerId?: string;
 
   // Overall Quality Score (0-100)
@@ -83,7 +79,6 @@ export class QualityScore {
   } = {};
 
   @Column('timestamp')
-  @Index()
   calculatedAt: Date = new Date();
 
   @CreateDateColumn()

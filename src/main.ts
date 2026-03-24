@@ -1,7 +1,8 @@
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ConfigService } from "@nestjs/config";
-import { ValidationPipe } from "@nestjs/common";
+import { I18nValidationExceptionFilter, I18nValidationPipe } from 'nestjs-i18n';
+import * as compression from 'compression';
 import { AppModule } from "./app.module";
 import { GlobalExceptionFilter } from "./common/filters";
 import {
@@ -10,6 +11,10 @@ import {
 } from './common/interceptors';
 import { LoggerService } from './common/logger';
 import { SentryService } from './common/sentry';
+import { SanitizationPipe } from './common/pipes';
+import { RedisIoAdapter } from './websocket/adapters/redis-io.adapter';
+import { InstanceCoordinatorService } from './scaling/instance-coordinator.service';
+import { compressionConfig } from './common/config/compression.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -46,9 +51,13 @@ async function bootstrap() {
     credentials: corsCredentials,
   });
 
+  // Enable compression
+  app.use((compression as any)(compressionConfig));
+
   // Global pipes
   app.useGlobalPipes(
-    new ValidationPipe({
+    new SanitizationPipe(),
+    new I18nValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
@@ -58,8 +67,20 @@ async function bootstrap() {
     }),
   );
 
+  // Redis Adapter for WebSockets
+  const redisIoAdapter = new RedisIoAdapter(app, configService);
+  await redisIoAdapter.connectToRedis();
+  app.useWebSocketAdapter(redisIoAdapter);
+
+  // Instance Identification in Logs
+  const instanceCoordinator = app.get(InstanceCoordinatorService);
+  logger.info(`Application started on instance: ${instanceCoordinator.getInstanceId()}`);
+
   // Global filters
-  app.useGlobalFilters(new GlobalExceptionFilter(logger, sentryService));
+  app.useGlobalFilters(
+    new GlobalExceptionFilter(logger, sentryService),
+    new I18nValidationExceptionFilter({ detailedErrors: false }),
+  );
 
   // Global interceptors
   app.useGlobalInterceptors(new LoggingInterceptor(logger));
@@ -69,12 +90,23 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('StellarSwipe API')
     .setDescription('Copy trading DApp on Stellar')
+    .setVersion('2.0')
+    .addBearerAuth()
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup(`${globalPrefix}/docs`, app, document);
+
+  // V1 Swagger (Deprecated)
+  const configV1 = new DocumentBuilder()
+    .setTitle('StellarSwipe API v1 (Deprecated)')
+    .setDescription('Legacy API - Sunset: 2025-12-31')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
-  
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup(`${globalPrefix}/docs`, app, document);
+
+  const documentV1 = SwaggerModule.createDocument(app, configV1);
+  SwaggerModule.setup('api/v1/docs', app, documentV1);
 
   await app.listen(port, host, () => {
     logger.info(`🚀 StellarSwipe Backend running on http://${host}:${port}`);

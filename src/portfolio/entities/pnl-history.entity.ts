@@ -8,22 +8,17 @@ import {
 } from 'typeorm';
 
 @Entity('pnl_history')
-@Index(['userId', 'snapshotDate'])
-@Index(['userId', 'assetSymbol', 'signalId', 'snapshotDate'], { unique: true })
 export class PnlHistory {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column({ name: 'user_id', type: 'uuid' })
-  @Index()
   userId!: string;
 
   @Column({ name: 'asset_symbol', length: 100 })
-  @Index()
   assetSymbol!: string;
 
   @Column({ name: 'signal_id', type: 'uuid', nullable: true })
-  @Index()
   signalId?: string | null;
 
   @Column({ name: 'snapshot_date', type: 'date' })

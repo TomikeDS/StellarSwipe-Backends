@@ -31,7 +31,6 @@ export class Feedback {
   id!: string;
 
   @Column({ name: 'beta_user_id', type: 'uuid' })
-  @Index()
   betaUserId!: string;
 
   @ManyToOne(() => BetaUser)
@@ -43,7 +42,6 @@ export class Feedback {
     enum: FeedbackType,
     default: FeedbackType.GENERAL,
   })
-  @Index()
   type!: FeedbackType;
 
   @Column({
@@ -51,7 +49,6 @@ export class Feedback {
     enum: FeedbackStatus,
     default: FeedbackStatus.NEW,
   })
-  @Index()
   status!: FeedbackStatus;
 
   @Column({ length: 255 })

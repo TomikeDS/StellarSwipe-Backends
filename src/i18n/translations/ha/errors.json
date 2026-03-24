@@ -1,0 +1,22 @@
+{
+    "INVALID_PRICE": "Farashin da ba daidai ba",
+    "INSUFFICIENT_BALANCE": "Babu isasshen kuɗi don wannan ciniki",
+    "SIGNAL_NOT_FOUND": "Ba a sami sigina ba",
+    "TRADE_FAILED": "Ciniki bai yi nasara ba",
+    "USER_NOT_FOUND": "Ba a sami mai amfani ba",
+    "USER_ALREADY_EXISTS": "Mai amfani da wannan adireshin walat ya riga yana nan",
+    "PREFERENCE_NOT_FOUND": "Ba a sami zaɓuɓɓukan mai amfani ba",
+    "UNAUTHORIZED": "Samun shiga ba tare da izini ba",
+    "INVALID_WALLET": "Adireshin walat ɗin da ba daidai ba",
+    "SESSION_EXPIRED": "Zama ya ƙare",
+    "CHALLENGE_EXPIRED": "Kalubalen tantancewa ya ƙare",
+    "INVALID_SIGNATURE": "Sa hannun da ba daidai ba",
+    "ASSET_NOT_FOUND": "Ba a sami dukiya ba",
+    "PORTFOLIO_NOT_FOUND": "Ba a sami fayil ba",
+    "RISK_LIMIT_EXCEEDED": "An haura ƙimar haɗari",
+    "SLIPPAGE_TOO_HIGH": "Slippage ya zarce matakin da aka yarda",
+    "INTERNAL_ERROR": "An sami kuskuren sabar ciki",
+    "VALIDATION_FAILED": "Tantancewar ta gaza",
+    "RATE_LIMIT_EXCEEDED": "Bukatu da yawa, don Allah a sake gwadawa anjima",
+    "FORBIDDEN": "Ba ku da izinin yin wannan aikin"
+}

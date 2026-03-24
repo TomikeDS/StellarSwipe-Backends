@@ -16,8 +16,6 @@ export enum AssetType {
 }
 
 @Entity('assets')
-@Index(['code', 'issuer'], { unique: true })
-@Index(['code'])
 export class Asset {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

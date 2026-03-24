@@ -23,7 +23,6 @@ export class InviteCode {
   id!: string;
 
   @Column({ unique: true, length: 16 })
-  @Index()
   code!: string;
 
   @Column({

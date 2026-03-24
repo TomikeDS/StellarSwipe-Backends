@@ -8,8 +8,6 @@ import {
 } from 'typeorm';
 
 @Entity('providers')
-@Index(['publicKey'], { unique: true })
-@Index(['verified'])
 export class Provider {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

@@ -14,13 +14,11 @@ export enum LimitType {
 }
 
 @Entity('transaction_limits')
-@Index(['userId', 'limitType'], { unique: true })
 export class TransactionLimit {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  @Index()
   userId: string;
 
   @Column({

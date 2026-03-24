@@ -1,4 +1,5 @@
 import { IsArray, IsNumber, IsOptional, IsString, Min } from 'class-validator';
+import { IsStellarPublicKey, IsStellarSecretKey } from '../../common/decorators/validation.decorator';
 
 export class InvokeContractDto {
   @IsString()
@@ -13,10 +14,12 @@ export class InvokeContractDto {
 
   @IsString()
   @IsOptional()
+  @IsStellarSecretKey()
   sourceSecret?: string;
 
   @IsString()
   @IsOptional()
+  @IsStellarPublicKey()
   sourceAccount?: string;
 
   @IsNumber()

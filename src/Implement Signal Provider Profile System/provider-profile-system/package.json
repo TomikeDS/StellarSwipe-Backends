@@ -1,0 +1,43 @@
+{
+  "name": "provider-profile-system",
+  "version": "1.0.0",
+  "description": "A provider profile system with public stats, verification badges, and follower tracking.",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint . --ext .ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0",
+    "@nestjs/platform-express": "^9.0.0",
+    "class-validator": "^0.13.1",
+    "class-transformer": "^0.4.0",
+    "typeorm": "^0.2.41",
+    "pg": "^8.7.1",
+    "cache-manager": "^3.4.0",
+    "nestjs-cache-manager": "^1.0.0"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^9.0.0",
+    "typescript": "^4.5.4",
+    "ts-jest": "^27.0.0",
+    "jest": "^27.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-config-prettier": "^8.0.0"
+  },
+  "keywords": [
+    "nestjs",
+    "provider",
+    "profile",
+    "verification",
+    "stats",
+    "followers"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

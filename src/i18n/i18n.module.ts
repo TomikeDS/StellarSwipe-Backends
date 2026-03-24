@@ -1,0 +1,34 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import {
+  AcceptLanguageResolver,
+  HeaderResolver,
+  I18nModule as NestI18nModule,
+  QueryResolver,
+} from 'nestjs-i18n';
+import * as path from 'path';
+import { I18nAppService } from './i18n.service';
+
+@Module({
+  imports: [
+    NestI18nModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        fallbackLanguage: configService.get('app.fallbackLanguage', 'en'),
+        loaderOptions: {
+          path: path.join(__dirname, '/translations/'),
+          watch: true,
+        },
+        logging: true,
+      }),
+      resolvers: [
+        { use: QueryResolver, options: ['lang'] },
+        AcceptLanguageResolver,
+        new HeaderResolver(['x-custom-lang']),
+      ],
+      inject: [ConfigService],
+    }),
+  ],
+  providers: [I18nAppService],
+  exports: [I18nAppService],
+})
+export class I18nModule {}

@@ -1,0 +1,22 @@
+{
+    "INVALID_PRICE": "Invalid price provided",
+    "INSUFFICIENT_BALANCE": "Insufficient balance for this trade",
+    "SIGNAL_NOT_FOUND": "Signal not found",
+    "TRADE_FAILED": "Trade execution failed",
+    "USER_NOT_FOUND": "User not found",
+    "USER_ALREADY_EXISTS": "User with this wallet address already exists",
+    "PREFERENCE_NOT_FOUND": "User preferences not found",
+    "UNAUTHORIZED": "Unauthorized access",
+    "INVALID_WALLET": "Invalid wallet address",
+    "SESSION_EXPIRED": "Session has expired",
+    "CHALLENGE_EXPIRED": "Authentication challenge has expired",
+    "INVALID_SIGNATURE": "Invalid signature provided",
+    "ASSET_NOT_FOUND": "Asset not found",
+    "PORTFOLIO_NOT_FOUND": "Portfolio not found",
+    "RISK_LIMIT_EXCEEDED": "Risk limit exceeded",
+    "SLIPPAGE_TOO_HIGH": "Slippage exceeds maximum allowed",
+    "INTERNAL_ERROR": "An internal server error occurred",
+    "VALIDATION_FAILED": "Validation failed",
+    "RATE_LIMIT_EXCEEDED": "Too many requests, please try again later",
+    "FORBIDDEN": "You do not have permission to perform this action"
+}
