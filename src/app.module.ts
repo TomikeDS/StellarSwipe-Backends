@@ -48,6 +48,7 @@ import { DrModule } from './disaster-recovery/dr.module';
 import { MarketIntelligenceModule } from './market-intelligence/market-intelligence.module';
 import { DocumentationModule } from './documentation/documentation.module';
 import { CompetitionsModule } from './competitions/competitions.module';
+import { NftModule } from './nft/nft.module';
 
 @Module({
   imports: [
@@ -144,6 +145,7 @@ import { CompetitionsModule } from './competitions/competitions.module';
     MarketIntelligenceModule,
     DocumentationModule,
     CompetitionsModule,
+    NftModule,
   ],
   providers: [StellarConfigService],
   exports: [StellarConfigService],
