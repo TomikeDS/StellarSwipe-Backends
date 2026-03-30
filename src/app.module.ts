@@ -49,7 +49,19 @@ import { MarketIntelligenceModule } from './market-intelligence/market-intellige
 import { DocumentationModule } from './documentation/documentation.module';
 import { CompetitionsModule } from './competitions/competitions.module';
 import { NftModule } from './nft/nft.module';
+ feature/295-discord-community-integration
 import { DiscordBotModule } from './integrations/discord/discord-bot.module';
+
+ feature/294-telegram-bot-integration
+import { TelegramBotModule } from './integrations/telegram/telegram-bot.module';
+
+ feature/293-mobile-api-optimizations
+import { MobileModule } from './mobile/mobile.module';
+
+import { AutomationModule } from './integrations/automation-platforms/automation.module';
+ main
+ main
+ main
 
 @Module({
   imports: [
@@ -147,7 +159,19 @@ import { DiscordBotModule } from './integrations/discord/discord-bot.module';
     DocumentationModule,
     CompetitionsModule,
     NftModule,
+ feature/295-discord-community-integration
     DiscordBotModule,
+
+ feature/294-telegram-bot-integration
+    TelegramBotModule,
+
+ feature/293-mobile-api-optimizations
+    MobileModule,
+
+    AutomationModule,
+ main
+ main
+ main
   ],
   providers: [StellarConfigService],
   exports: [StellarConfigService],
