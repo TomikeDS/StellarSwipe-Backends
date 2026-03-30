@@ -49,7 +49,11 @@ import { MarketIntelligenceModule } from './market-intelligence/market-intellige
 import { DocumentationModule } from './documentation/documentation.module';
 import { CompetitionsModule } from './competitions/competitions.module';
 import { NftModule } from './nft/nft.module';
+ feature/293-mobile-api-optimizations
+import { MobileModule } from './mobile/mobile.module';
+
 import { AutomationModule } from './integrations/automation-platforms/automation.module';
+ main
 
 @Module({
   imports: [
@@ -147,7 +151,11 @@ import { AutomationModule } from './integrations/automation-platforms/automation
     DocumentationModule,
     CompetitionsModule,
     NftModule,
+ feature/293-mobile-api-optimizations
+    MobileModule,
+
     AutomationModule,
+ main
   ],
   providers: [StellarConfigService],
   exports: [StellarConfigService],
