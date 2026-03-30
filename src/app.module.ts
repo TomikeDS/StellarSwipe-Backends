@@ -49,6 +49,7 @@ import { MarketIntelligenceModule } from './market-intelligence/market-intellige
 import { DocumentationModule } from './documentation/documentation.module';
 import { CompetitionsModule } from './competitions/competitions.module';
 import { NftModule } from './nft/nft.module';
+import { DiscordBotModule } from './integrations/discord/discord-bot.module';
 
 @Module({
   imports: [
@@ -146,6 +147,7 @@ import { NftModule } from './nft/nft.module';
     DocumentationModule,
     CompetitionsModule,
     NftModule,
+    DiscordBotModule,
   ],
   providers: [StellarConfigService],
   exports: [StellarConfigService],
