@@ -10,6 +10,7 @@ import { StatisticalAnalysisService } from './services/statistical-analysis.serv
 import { AttributionService } from './services/attribution.service';
 import { Trade } from '../trades/entities/trade.entity';
 import { Signal } from '../signals/entities/signal.entity';
+import { User } from '../users/entities/user.entity';
 import { PriceService } from '../shared/price.service';
 import { CorrelationService } from './services/correlation.service';
 import { PriceHistory } from '../prices/entities/price-history.entity';
@@ -21,18 +22,20 @@ import { AnalyzeFunnelsJob } from './funnels/jobs/analyze-funnels.job';
 import { Funnel } from './funnels/entities/funnel.entity';
 import { FunnelStep } from './funnels/entities/funnel-step.entity';
 import { UserFunnelProgress } from './funnels/entities/user-funnel-progress.entity';
- feature/ltv-calculator
-
 import { AbTestAnalyzerService } from './ab-testing/ab-test-analyzer.service';
 import { AbTestController } from './ab-testing/ab-test.controller';
 import { ExperimentResult } from './ab-testing/entities/experiment-result.entity';
 import { VariantPerformance } from './ab-testing/entities/variant-performance.entity';
- main
 import { LtvCalculatorService } from './ltv/ltv-calculator.service';
 import { LtvController } from './ltv/ltv.controller';
 import { UserLtv } from './ltv/entities/user-ltv.entity';
 import { LtvSegment } from './ltv/entities/ltv-segment.entity';
 import { CalculateLtvJob } from './ltv/jobs/calculate-ltv.job';
+import { CohortController } from './cohort-analysis/cohort.controller';
+import { CohortAnalyzerService } from './cohort-analysis/cohort-analyzer.service';
+import { CalculateCohortsJob } from './cohort-analysis/jobs/calculate-cohorts.job';
+import { Cohort } from './cohort-analysis/entities/cohort.entity';
+import { CohortMetric } from './cohort-analysis/entities/cohort-metric.entity';
 
 @Module({
   imports: [
@@ -41,23 +44,29 @@ import { CalculateLtvJob } from './ltv/jobs/calculate-ltv.job';
       MetricSnapshot,
       Trade,
       Signal,
+      User,
       PriceHistory,
       AssetPair,
- feature/ltv-calculator
-
       ExperimentResult,
       VariantPerformance,
- main
       UserLtv,
       LtvSegment,
       Funnel,
       FunnelStep,
       UserFunnelProgress,
+      Cohort,
+      CohortMetric,
     ]),
     ScheduleModule.forRoot(),
     TradePatternsModule,
   ],
-  controllers: [AnalyticsController, AbTestController, LtvController, FunnelController],
+  controllers: [
+    AnalyticsController,
+    AbTestController,
+    LtvController,
+    FunnelController,
+    CohortController,
+  ],
   providers: [
     AnalyticsService,
     RiskMetricsService,
@@ -65,14 +74,13 @@ import { CalculateLtvJob } from './ltv/jobs/calculate-ltv.job';
     AttributionService,
     CorrelationService,
     PriceService,
-feature/ltv-calculator
-
     AbTestAnalyzerService,
-main
     LtvCalculatorService,
     CalculateLtvJob,
     FunnelTrackerService,
     AnalyzeFunnelsJob,
+    CohortAnalyzerService,
+    CalculateCohortsJob,
   ],
   exports: [
     AnalyticsService,
@@ -80,12 +88,10 @@ main
     AttributionService,
     CorrelationService,
     StatisticalAnalysisService,
- feature/ltv-calculator
-
     AbTestAnalyzerService,
- main
     LtvCalculatorService,
     FunnelTrackerService,
+    CohortAnalyzerService,
   ],
 })
 export class AnalyticsModule {}
