@@ -9,6 +9,7 @@ import { ConnectionPoolMetricsService } from './connection-pool.metrics.service'
 import { MonitoringModule } from '../monitoring/monitoring.module';
 import { SchemaVersioningService } from './schema-versioning.service';
 import { SchemaVersion } from './schema-version.entity';
+import { QueryMonitorService } from './query-monitor.service';
 
 @Global()
 @Module({
@@ -23,6 +24,7 @@ import { SchemaVersion } from './schema-version.entity';
     MaterializedViewService,
     ConnectionPoolMetricsService,
     SchemaVersioningService,
+    QueryMonitorService,
   ],
   exports: [
     QueryAnalyzerService,
@@ -30,6 +32,7 @@ import { SchemaVersion } from './schema-version.entity';
     MaterializedViewService,
     ConnectionPoolMetricsService,
     SchemaVersioningService,
+    QueryMonitorService,
   ],
 })
 export class DatabaseOptimizationModule {}
