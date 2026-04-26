@@ -513,3 +513,44 @@ class CreateOrderDto {
 
 - Extra properties at any nesting depth are rejected (not silently dropped), preventing mass-assignment attacks on nested objects.
 - No authentication or authorization logic is modified.
+
+## Dynamic Secrets Rotation
+
+`RotationService` (`src/secrets/rotation.service.ts`) provides in-memory dynamic rotation of backend credentials and service keys without requiring a process restart.
+
+### How it works
+
+1. At startup, register each secret with its current value (read from env):
+   ```typescript
+   this.rotationService.register('jwt-secret', process.env.JWT_SECRET, 0);
+   this.rotationService.register('api-key', process.env.API_KEY, 3_600_000); // auto-rotate every hour
+   ```
+2. On rotation (manual or scheduled), a cryptographically-random 32-byte hex value is generated and stored in-memory.
+3. A `secret.rotated` event is emitted so consumers can reload without restart:
+   ```typescript
+   @OnEvent('secret.rotated')
+   onSecretRotated(payload: SecretRotatedPayload) {
+     if (payload.name === 'jwt-secret') {
+       this.reloadJwtModule(this.rotationService.get('jwt-secret'));
+     }
+   }
+   ```
+4. Callers always read the current value via `rotationService.get(name)`.
+
+### Security properties
+
+- Secret values are **never logged** — only the secret name appears in logs.
+- The `secret.rotated` event payload contains only `{ name, rotatedAt }` — no value.
+- `getRecord()` exposes metadata (name, lastRotatedAt, intervalMs) but **not** the value.
+- Auto-rotation timers are cleared on module destroy to prevent resource leaks.
+
+### Importing
+
+Add `SecretsModule` to any feature module that needs rotation:
+
+```typescript
+import { SecretsModule } from '../secrets/secrets.module';
+
+@Module({ imports: [SecretsModule] })
+export class AuthModule {}
+```
