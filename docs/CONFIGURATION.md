@@ -554,3 +554,47 @@ import { SecretsModule } from '../secrets/secrets.module';
 @Module({ imports: [SecretsModule] })
 export class AuthModule {}
 ```
+
+## Backup Verification
+
+`VerificationService` (`src/backup/verification.service.ts`) closes the gap in `BackupService.verifyBackup()` which only checked file size > 0. It runs four checks on every snapshot file:
+
+| Check | Condition | Purpose |
+|---|---|---|
+| `exists` | File present on disk | Catches missing/deleted snapshots |
+| `minSize` | ≥ 1 KB | Rejects truncated or empty files |
+| `notStale` | Age ≤ `maxAgeMs` (default 25 h) | Flags missed backup runs |
+| `checksumMatch` | SHA-256 matches expected digest | Detects corruption or tampering |
+
+`checksumMatch` is `null` (skipped) when no expected digest is provided.
+
+### Usage
+
+```typescript
+// Inject via BackupModule
+const result = await this.verificationService.verify(
+  '/var/backups/stellarswipe/backup.sql.gz.gpg',
+  storedSha256Digest,   // optional — omit to skip checksum check
+  25 * 60 * 60 * 1000, // optional — override max age (ms)
+);
+
+if (!result.passed) {
+  // result.checks shows which check(s) failed
+  // result.error contains the message for existence failures
+}
+```
+
+### Storing checksums at backup creation time
+
+After `BackupService.createBackup()` returns the encrypted path, compute and store the digest:
+
+```typescript
+const digest = await this.verificationService.sha256(encryptedPath);
+// persist `digest` alongside the backup record
+```
+
+### Security
+
+- No credentials, passphrases, or secret values are read or logged.
+- Only the file path and check results appear in log output.
+- Existing `BackupService` access-control semantics are unchanged.
